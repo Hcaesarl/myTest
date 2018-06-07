@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.klaus.dao.MenuDAO">
+
+    <resultMap id="menumap" type="com.klaus.entity.Menu">
+        <id column="menu_id" property="id"/>
+        <result column="menu_name" property="name"/>
+        <result column="menu_level" property="level"/>
+        <result column="menu_Ename" property="Ename"/>
+    </resultMap>
+
+    <select id="selectMenuByLevel" resultMap="menumap">
+        SELECT * FROM menu WHERE menu_level = #{level } or menu_level &lt; #{level }
+    </select>
+
+</mapper>

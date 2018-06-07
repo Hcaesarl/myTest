@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.klaus.dao.UserDAO">
+
+	<resultMap id="usermap" type="com.klaus.entity.User">
+		<id column="user_id" property="id"/>
+		<result column="user_name" property="name"/>
+		<result column="user_num" property="num"/>
+		<result column="user_level" property="level"/>
+		<result column="user_password" property="password"/>
+		<result column="user_tel" property="tel"/>
+		<result column="user_type" property="type"/>
+		<association property="department" select="selectDPById" javaType="java.lang.String" column="user_department_id"/>
+		<association property="position" select="selectDPById" javaType="java.lang.String" column="user_position_id"/>
+	</resultMap>
+
+	<resultMap id="menumap" type="com.klaus.entity.Menu">
+		<id column="menu_id" property="id"/>
+	</resultMap>
+
+	<select id="login" resultMap="usermap">
+		select * from user where user_num=#{num} and user_password=#{password}
+	</select>
+
+	<select id="selectDPById" resultType="java.lang.String">
+		select position_name from position where position_id=#{id}
+	</select>
+
+	<select id="selectUserByDepartment" resultMap="usermap">
+		select * from user where user_department_id=#{departmentId};
+	</select>
+
+	<select id="selectReviewUser" resultMap="usermap">
+		select * from user where user_type=1;
+	</select>
+
+	<update id="changeTypeById">
+		update user set user_type=0 where user_id=#{id};
+	</update>
+
+</mapper>

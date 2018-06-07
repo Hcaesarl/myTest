@@ -75,18 +75,18 @@
 
                             <br>
 
-                            <form class="form-horizontal row-fluid">
+                            <form class="form-horizontal row-fluid" action="/pushproject">
                                 <div class="control-group">
                                     <label class="control-label" for="projectName"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">项目名称</font></font></label>
                                     <div class="controls">
-                                        <input type="text" id="projectName" placeholder="请输入项目名称.." class="span8">
+                                        <input type="text" id="projectName" placeholder="请输入项目名称.." class="span8" name="name">
                                     </div>
                                 </div>
 
                                 <div class="control-group">
                                     <label class="control-label" for="projectName"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">项目地点</font></font></label>
                                     <div class="controls">
-                                        <input type="text" id="projectLocation" placeholder="格式：省级-市级" class="span8">
+                                        <input type="text" id="projectLocation" placeholder="格式：省级-市级" class="span8" name="location">
                                     </div>
                                 </div>
 
@@ -94,7 +94,7 @@
                                     <label class="control-label" for="projectName"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">项目周期</font></font></label>
                                     <div class="controls">
                                         <div class="input-append">
-                                            <input type="text" placeholder="仅限整数" class="span8"><span class="add-on"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">月</font></font></span>
+                                            <input type="text" placeholder="仅限整数" class="span8" name="cycle"><span class="add-on"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">月</font></font></span>
                                         </div>
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@
                                     <label class="control-label" for="projectName"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">站点数量</font></font></label>
                                     <div class="controls">
                                         <div class="input-append">
-                                            <input type="text" placeholder="请填写站点数目" class="span8"><span class="add-on"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">个</font></font></span>
+                                            <input type="text" placeholder="请填写站点数目" class="span8" name="quota"><span class="add-on"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">个</font></font></span>
                                         </div>
                                     </div>
                                 </div>
@@ -111,10 +111,10 @@
                                 <div class="control-group">
                                     <label class="control-label" for="projectName"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">负责部门</font></font></label>
                                     <div class="controls">
-                                        <select tabindex="1" data-placeholder="Select here.." class="span8">
+                                        <select tabindex="1" data-placeholder="Select here.." class="span8" name="departmentId">
                                             <option value=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请选择..</font></font></option>
                                             <c:forEach items="${departmentList}" var="itemDepartment" varStatus="status">
-                                                <option value="Category 4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">${itemDepartment.name}</font></font></option>
+                                                <option value="${itemDepartment.id}"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">${itemDepartment.name}</font></font></option>
                                             </c:forEach>
                                         </select>
                                     </div>
@@ -123,7 +123,7 @@
                                 <div class="control-group">
                                     <label class="control-label" for="projectName"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">备注信息</font></font></label>
                                     <div class="controls">
-                                        <textarea class="span8" rows="5" placeholder="(选填)不超过140字"></textarea>
+                                        <textarea class="span8" rows="5" placeholder="(选填)不超过140字" name="message"></textarea>
                                     </div>
                                 </div>
 

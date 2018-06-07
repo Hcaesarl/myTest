@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.klaus.dao.ProjectDAO">
+
+    <resultMap id="projectmap" type="com.klaus.entity.Project">
+        <id column="project_id" property="id"/>
+        <result column="project_name" property="name"/>
+        <result column="project_cycle" property="cycle"/>
+        <result column="project_quota" property="quota"/>
+        <result column="project_location" property="location"/>
+        <result column="project_department_id" property="departmentId"/>
+        <result column="project_message" property="message"/>
+    </resultMap>
+
+    <insert id="pushProject">
+        INSERT INTO progect
+        (project_cycle, project_quota, project_name, project_location, project_department_id, project_message)
+        VALUES(#{cycle}, #{quota}, #{name}, #{location}, #{departmentId}, #{message});
+
+    </insert>
+
+</mapper>

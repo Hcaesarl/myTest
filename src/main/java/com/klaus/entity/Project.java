@@ -6,20 +6,19 @@ public class Project {
     private String location;
     private String cycle;//周期
     private String quota;//站点数量
-    private Department department;//负责部门
+    private int departmentId;//负责部门
     private String message;
 
     public Project() {
     }
 
-    public Project(int id, String name, String location, String cycle, String quota, Department department, String message) {
-
+    public Project(int id, String name, String location, String cycle, String quota, int departmentId, String message) {
         this.id = id;
         this.name = name;
         this.location = location;
         this.cycle = cycle;
         this.quota = quota;
-        this.department = department;
+        this.departmentId = departmentId;
         this.message = message;
     }
 
@@ -64,12 +63,12 @@ public class Project {
         this.quota = quota;
     }
 
-    public Department getDepartment() {
-        return department;
+    public int getDepartmentId() {
+        return departmentId;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
     }
 
     public String getMessage() {
@@ -88,7 +87,7 @@ public class Project {
                 ", location='" + location + '\'' +
                 ", cycle='" + cycle + '\'' +
                 ", quota='" + quota + '\'' +
-                ", department=" + department +
+                ", departmentId=" + departmentId +
                 ", message='" + message + '\'' +
                 '}';
     }

@@ -6,6 +6,8 @@ import com.klaus.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DepartmentServiceImpl implements DepartmentService {
 
@@ -15,5 +17,10 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public Department selectDepartmentByName(String name) {
         return departmentDAO.selectDepartmentByName(name);
+    }
+
+    @Override
+    public List selectAllDepartment() {
+        return departmentDAO.selectAllDepartment();
     }
 }

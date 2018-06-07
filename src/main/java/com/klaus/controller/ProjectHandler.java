@@ -1,11 +1,16 @@
 package com.klaus.controller;
 
+import com.klaus.entity.Department;
 import com.klaus.service.DepartmentService;
 import com.klaus.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
+@Controller
 public class ProjectHandler {
 
     @Autowired
@@ -13,6 +18,10 @@ public class ProjectHandler {
 
     @RequestMapping("/addproject")
     public ModelAndView addProject() {
-        return null;
+        ModelAndView modelAndView = new ModelAndView();
+        List<Department> departmentList = departmentService.selectAllDepartment();
+        modelAndView.addObject("departmentList", departmentList);
+        modelAndView.setViewName("addproject");
+        return modelAndView;
     }
 }

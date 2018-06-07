@@ -17,4 +17,8 @@
         select * from position where position_name = #{name}
     </select>
 
+    <select id="selectAllDepartment" resultMap="departmentmap">
+        select * from position  where position_superior=0;
+    </select>
+
 </mapper>

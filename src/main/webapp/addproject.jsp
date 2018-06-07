@@ -113,10 +113,9 @@
                                     <div class="controls">
                                         <select tabindex="1" data-placeholder="Select here.." class="span8">
                                             <option value=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">请选择..</font></font></option>
-                                            <option value="Category 1"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">第一排</font></font></option>
-                                            <option value="Category 2"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">第二排</font></font></option>
-                                            <option value="Category 3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">第三排</font></font></option>
-                                            <option value="Category 4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">第四排</font></font></option>
+                                            <c:forEach items="${departmentList}" var="itemDepartment" varStatus="status">
+                                                <option value="Category 4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">${itemDepartment.name}</font></font></option>
+                                            </c:forEach>
                                         </select>
                                     </div>
                                 </div>

@@ -129,7 +129,7 @@
 
                                 <div class="control-group">
                                     <div class="controls">
-                                        <button type="submit" class="btn"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加项目</font></font></button>
+                                        <button type="submit" class="btn btn-info"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">添加项目</font></font></button>
                                     </div>
                                 </div>
                             </form>

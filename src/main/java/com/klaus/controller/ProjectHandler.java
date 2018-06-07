@@ -24,4 +24,13 @@ public class ProjectHandler {
         modelAndView.setViewName("addproject");
         return modelAndView;
     }
+
+    @RequestMapping("/pushproject")
+    public ModelAndView pushProject() {
+        ModelAndView modelAndView = new ModelAndView();
+        List<Department> departmentList = departmentService.selectAllDepartment();
+        modelAndView.addObject("departmentList", departmentList);
+        modelAndView.setViewName("addproject");
+        return modelAndView;
+    }
 }

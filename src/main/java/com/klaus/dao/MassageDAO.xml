@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.klaus.dao.MassageDAO">
+
+    <resultMap id="massagemap" type="com.klaus.entity.Massage">
+        <id column="massage_id" property="id"/>
+        <result column="massage_name" property="name"/>
+        <result column="massage_text" property="text"/>
+        <association property="user" column="massage_user_id" select="com.klaus.dao.UserDAO.selectUserById"/>
+    </resultMap>
+
+   <insert id="addmassage">
+       INSERT INTO massage
+        (massage_name, massage_text, massage_user_id)
+        VALUES(#{name}, #{text}, #{user.id});
+   </insert>
+
+</mapper>

@@ -17,4 +17,6 @@ public interface UserDAO {
     public List<User> selectReviewUser();
 
     public void  changeTypeById(int id);
+
+    public User selectUserById(int id);
 }

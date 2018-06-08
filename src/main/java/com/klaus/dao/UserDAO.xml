@@ -38,4 +38,8 @@
 		update user set user_type=0 where user_id=#{id};
 	</update>
 
+	<select id="selectUserById" resultMap="usermap">
+		select * from user where user_id=#{id};
+	</select>
+
 </mapper>

@@ -5,14 +5,13 @@ import java.util.List;
 public class Department {
     private int id;
     private String name;
-    private List<String> position;
+    private List<Position> position;
     private List<User> users;
 
     public Department() {
     }
 
-    public Department(int id, String name, List<String> position, List<User> users) {
-
+    public Department(int id, String name, List<Position> position, List<User> users) {
         this.id = id;
         this.name = name;
         this.position = position;
@@ -36,11 +35,11 @@ public class Department {
         this.name = name;
     }
 
-    public List<String> getPosition() {
+    public List<Position> getPosition() {
         return position;
     }
 
-    public void setPosition(List<String> position) {
+    public void setPosition(List<Position> position) {
         this.position = position;
     }
 

@@ -34,4 +34,10 @@ public class DepartmentServiceImpl implements DepartmentService {
         }
     }
 
+    @Override
+    public List selectPositionBySuperior(String depaertmentName) {
+        Department department = departmentDAO.selectDepartmentByName(depaertmentName);
+        return department.getPosition();
+    }
+
 }

@@ -10,4 +10,6 @@ public interface DepartmentService {
     public List selectAllDepartment();
 
     public void addDepartment(Department department);
+
+    public List selectPositionBySuperior(String depaertmentName);
 }

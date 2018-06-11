@@ -2,6 +2,7 @@ package com.klaus.controller;
 
 import com.klaus.entity.Department;
 import com.klaus.entity.Menu;
+import com.klaus.entity.Position;
 import com.klaus.entity.User;
 import com.klaus.service.DepartmentService;
 import com.klaus.service.MenuService;
@@ -11,10 +12,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@SessionAttributes(value = {"user","list"})
+//@SessionAttributes({"user","list"})
 public class UserHandler {
 
     @Autowired
@@ -28,13 +31,15 @@ public class UserHandler {
 
 
     @RequestMapping("/login")
-    public ModelAndView login(User user) {
+    public ModelAndView login(User user,HttpSession session) {
         ModelAndView modelAndView = new ModelAndView();
         User loginUser = userService.login(user);
         List<Menu> list = menuService.selectMenuByLevel(loginUser.getLevel());
         Department department=departmentService.selectDepartmentByName(loginUser.getDepartment());
         System.out.println(department);
         if (loginUser != null) {
+            session.setAttribute("user",loginUser);
+            session.setAttribute("list", list);
             modelAndView.addObject("user", loginUser);
             modelAndView.addObject("list", list);
             modelAndView.addObject("department", department);
@@ -61,5 +66,22 @@ public class UserHandler {
         modelAndView.setViewName("reviewuser");
         modelAndView.addObject("reviewUserList", reviewUserList);
         return modelAndView;
+    }
+
+    @RequestMapping("/adduser")
+    public ModelAndView addUser(HttpSession session) {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("adduser");
+        User sessionUser = (User) session.getAttribute("user");
+        System.out.println(sessionUser);
+        List positionList = departmentService.selectPositionBySuperior(sessionUser.getDepartment());
+        modelAndView.addObject("positionList", positionList);
+        return modelAndView;
+    }
+
+    @RequestMapping("/pushuser")
+    public String pushuser(User user) {
+        System.out.println(user);
+        return "/adduser";
     }
 }

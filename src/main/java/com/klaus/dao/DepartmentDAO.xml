@@ -21,4 +21,14 @@
         select * from position  where position_superior=0;
     </select>
 
+    <insert id="addDepartment">
+        insert into position (position_name,position_superior,position_level)
+        values (#{name},0,0);
+    </insert>
+
+    <insert id="addPosition">
+        insert into position (position_name,position_superior,position_level)
+        values (#{arg0},#{arg1},#{arg2});
+    </insert>
+
 </mapper>

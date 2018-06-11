@@ -14,11 +14,11 @@ public class DepartmentHandler {
     private DepartmentService departmentService;
 
     @RequestMapping("adddepartment")
-    public ModelAndView adddepartment(Department department) {
+    public ModelAndView addDepartment(Department department) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("adddepartment");
         if (department.getName() != null) {
-            System.err.println(department);
+            departmentService.addDepartment(department);
         }
         return modelAndView;
     }

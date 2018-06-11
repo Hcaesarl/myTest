@@ -3,20 +3,18 @@ package com.klaus.entity;
 public class Position {
     private int id;
     private String name;
-    private String level;
+    private int level;
 
     public Position() {
     }
 
-    public Position(int id, String name, String level) {
-
+    public Position(int id, String name, int level) {
         this.id = id;
         this.name = name;
         this.level = level;
     }
 
     public int getId() {
-
         return id;
     }
 
@@ -32,11 +30,11 @@ public class Position {
         this.name = name;
     }
 
-    public String getLevel() {
+    public int getLevel() {
         return level;
     }
 
-    public void setLevel(String level) {
+    public void setLevel(int level) {
         this.level = level;
     }
 
@@ -45,7 +43,7 @@ public class Position {
         return "Position{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
-                ", level='" + level + '\'' +
+                ", level=" + level +
                 '}';
     }
 }

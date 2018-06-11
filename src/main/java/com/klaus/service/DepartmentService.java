@@ -8,4 +8,6 @@ public interface DepartmentService {
     public Department selectDepartmentByName(String name);
 
     public List selectAllDepartment();
+
+    public void addDepartment(Department department);
 }

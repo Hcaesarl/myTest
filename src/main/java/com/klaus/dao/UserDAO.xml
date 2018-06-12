@@ -42,4 +42,9 @@
 		select * from user where user_id=#{id};
 	</select>
 
+	<insert id="pushUser">
+		insert into user (user_name,user_num,user_department_id,user_level,user_password,user_tel,user_position_id,user_type)
+		values (#{arg0},#{arg1},#{arg2},#{arg3},#{arg4},#{arg5},#{arg6},#{arg7})
+	</insert>
+
 </mapper>

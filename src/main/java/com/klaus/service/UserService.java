@@ -8,4 +8,5 @@ public interface UserService {
     public User login(User user);
     public List<User> selectReviewUser();
     public List<User> changeTypeById(int id);
+    public void pushUser(User user);
 }

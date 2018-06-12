@@ -40,4 +40,8 @@ public class DepartmentServiceImpl implements DepartmentService {
         return department.getPosition();
     }
 
+    @Override
+    public Position selectPositionByName(String name,int superior) {
+        return departmentDAO.selectPositionByName(name,superior);
+    }
 }

@@ -15,4 +15,6 @@ public interface DepartmentDAO {
     public void addPosition(String name, int superior, int level);
 
     public List selectPositionBySuperior(int superior);
+
+    public Position selectPositionByName(String name,int superior);
 }

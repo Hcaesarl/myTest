@@ -19,4 +19,6 @@ public interface UserDAO {
     public void  changeTypeById(int id);
 
     public User selectUserById(int id);
+
+    public void pushUser(String name,int num,int department_id,int level,String password,int tel,int position_id,int type);
 }

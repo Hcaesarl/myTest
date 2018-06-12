@@ -37,4 +37,8 @@
         select * from position where position_superior=#{superior}
     </select>
 
+    <select id="selectPositionByName" resultMap="positionmap">
+        select * from position where position_name=#{arg0} and position_superior=#{arg1};
+    </select>
+
 </mapper>

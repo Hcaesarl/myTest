@@ -81,7 +81,7 @@ public class UserHandler {
 
     @RequestMapping("/pushuser")
     public String pushuser(User user) {
-        System.out.println(user);
+        userService.pushUser(user);
         return "/adduser";
     }
 }

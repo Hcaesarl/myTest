@@ -15,4 +15,8 @@
         VALUES(#{name}, #{text}, #{user.id});
    </insert>
 
+    <select id="selectAllMassage" resultMap="massagemap">
+        select * from massage;
+    </select>
+
 </mapper>

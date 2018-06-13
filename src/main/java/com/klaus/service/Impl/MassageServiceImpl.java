@@ -6,6 +6,8 @@ import com.klaus.service.MassageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MassageServiceImpl implements MassageService {
 
@@ -15,6 +17,10 @@ public class MassageServiceImpl implements MassageService {
     @Override
     public void addMassage(Massage massage) {
         massageDAO.addmassage(massage);
+    }
 
+    @Autowired
+    public List selectAllMassage() {
+        return massageDAO.selectAllMassage();
     }
 }

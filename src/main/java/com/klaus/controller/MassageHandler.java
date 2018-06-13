@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 
 @Controller
 public class MassageHandler {
@@ -21,6 +23,15 @@ public class MassageHandler {
         if (massage.getText()!=null){
             massageService.addMassage(massage);
         }
+        return modelAndView;
+    }
+
+    @RequestMapping("/showmassage")
+    public ModelAndView showMassage(){
+        ModelAndView modelAndView = new ModelAndView();
+        List<Massage> massagesList = massageService.selectAllMassage();
+        modelAndView.setViewName("showmassage");
+        modelAndView.addObject("massageList", massagesList);
         return modelAndView;
     }
 }

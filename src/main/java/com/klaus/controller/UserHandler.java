@@ -1,5 +1,6 @@
 package com.klaus.controller;
 
+import com.klaus.dao.WorkDAO;
 import com.klaus.entity.Department;
 import com.klaus.entity.Menu;
 import com.klaus.entity.Position;
@@ -7,6 +8,7 @@ import com.klaus.entity.User;
 import com.klaus.service.DepartmentService;
 import com.klaus.service.MenuService;
 import com.klaus.service.UserService;
+import com.klaus.service.WorkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Set;
 
 @Controller
 //@SessionAttributes({"user","list"})
@@ -29,20 +32,24 @@ public class UserHandler {
     @Autowired
     private DepartmentService departmentService;
 
+    @Autowired
+    private WorkService workService;
+
 
     @RequestMapping("/login")
     public ModelAndView login(User user,HttpSession session) {
         ModelAndView modelAndView = new ModelAndView();
         User loginUser = userService.login(user);
-        List<Menu> list = menuService.selectMenuByLevel(loginUser.getLevel());
-        Department department=departmentService.selectDepartmentByName(loginUser.getDepartment());
-        System.out.println(department);
         if (loginUser != null) {
+            List<Menu> list = menuService.selectMenuByLevel(loginUser.getLevel());
+            Department department=departmentService.selectDepartmentByName(loginUser.getDepartment());
+            Set dataList=workService.selectData(loginUser);
+            System.err.println(dataList);
             session.setAttribute("user",loginUser);
             session.setAttribute("list", list);
             modelAndView.addObject("user", loginUser);
             modelAndView.addObject("list", list);
-            modelAndView.addObject("department", department);
+            modelAndView.addObject("dataList", dataList);
             modelAndView.setViewName("index");
         }else {
             modelAndView.setViewName("login");

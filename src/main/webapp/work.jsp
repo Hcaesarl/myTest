@@ -10,6 +10,15 @@
     <link type="text/css" href="images/icons/css/font-awesome.css" rel="stylesheet">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600'
           rel='stylesheet'>
+    <link type="text/css" href='css/dropify.css' rel='stylesheet'>
+    <link type="text/css" href="css/common.css">
+    <link type="text/css" href="css/animate.min.css">
+    <style>
+        .dropify-wrapper {
+            padding:0;
+        }
+    </style>
+
 
 </head>
 <body>
@@ -63,8 +72,9 @@
                         <div class="module-body">
 
                             <form action="/upload" method="post" enctype="multipart/form-data">
-                                <input type="file" name="file" id="fileinput">
-                                <input type="submit" value="提交">
+                                <%--<input type="file" name="file" id="fileinput">--%>
+                                <input type="file" name="file" class="dropify"/>
+                                <input type="submit" class="btn btn-success" value="提交">
                             </form>
 
                         </div>
@@ -84,6 +94,32 @@
 <script src="scripts/flot/jquery.flot.resize.js" type="text/javascript"></script>
 <script src="scripts/datatables/jquery.dataTables.js" type="text/javascript"></script>
 <script src="scripts/common.js" type="text/javascript"></script>
+<script src="scripts/dropify.js"></script>
+<script src="scripts/jquery.hDialog.min.js"></script>
+<script>
+    $(function () {
 
+
+        $('.dropify').dropify({
+            messages: {
+                'default': '点击或拖拽文件到这里',
+                'replace': '点击或拖拽文件到这里来替换文件',
+                'remove':  '移除文件',
+                'error':   '对不起，你上传的文件太大了'
+            }
+        });
+    });
+</script>
+<script>
+    $(function () {
+        var al=${alert};
+        if (al == 1) {
+            $.tooltip('OK, 操作成功！', 2500, true);
+        }else if (al == 0) {
+            $.tooltip('抱歉，你上传的文件格式有误');
+
+        }
+    })
+</script>
 </body>
 </html>

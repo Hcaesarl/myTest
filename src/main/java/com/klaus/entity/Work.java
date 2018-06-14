@@ -7,26 +7,26 @@ public class Work {
     private String city;
     private String address;
     private String type;
-    private double longitude;
-    private double latitude;
+    private String longitude;
+    private String latitude;
     private String cellName;
-    private int carrier;
-    private int dbm;
-    private int PDCCH;
-    private int PA;
-    private int PB;
-    private int cellID;
-    private int PCI;
-    private int VOLTE;
-    private int SRVCC;
-    private int voiceA2;
-    private int voiceB2;
+    private String carrier;
+    private String dbm;
+    private String PDCCH;
+    private String PA;
+    private String PB;
+    private String cellID;
+    private String PCI;
+    private String VOLTE;
+    private String SRVCC;
+    private String voiceA2;
+    private String voiceB2;
     private String Band;
-    private int point;
-    private int bandwidth;
-    private int sequence;
-    private double subframe;
-    private double SpecialSubframes;
+    private String point;
+    private String bandwidth;
+    private String sequence;
+    private String subframe;
+    private String SpecialSubframes;
     private User user;
     private String date;
     private String result;
@@ -34,8 +34,38 @@ public class Work {
     public Work() {
     }
 
-    public Work(int id, String name, String planning, String city, String address, String type, double longitude, double latitude, String cellName, int carrier, int dbm, int PDCCH, int PA, int PB, int cellID, int PCI, int VOLTE, int SRVCC, int voiceA2, int voiceB2, String band, int point, int bandwidth, int sequence, double subframe, double specialSubframes, User user, String date, String result) {
+    public Work(String name, String planning, String city, String address, String type, String longitude, String latitude, String cellName, String carrier, String dbm, String PDCCH, String PA, String PB, String cellID, String PCI, String VOLTE, String SRVCC, String voiceA2, String voiceB2, String band, String point, String bandwidth, String sequence, String subframe, String specialSubframes, User user, String date) {
+        this.name = name;
+        this.planning = planning;
+        this.city = city;
+        this.address = address;
+        this.type = type;
+        this.longitude = longitude;
+        this.latitude = latitude;
+        this.cellName = cellName;
+        this.carrier = carrier;
+        this.dbm = dbm;
+        this.PDCCH = PDCCH;
+        this.PA = PA;
+        this.PB = PB;
+        this.cellID = cellID;
+        this.PCI = PCI;
+        this.VOLTE = VOLTE;
+        this.SRVCC = SRVCC;
+        this.voiceA2 = voiceA2;
+        this.voiceB2 = voiceB2;
+        Band = band;
+        this.point = point;
+        this.bandwidth = bandwidth;
+        this.sequence = sequence;
+        this.subframe = subframe;
+        SpecialSubframes = specialSubframes;
+        this.user = user;
+        this.date = date;
+        this.result = result;
+    }
 
+    public Work(int id, String name, String planning, String city, String address, String type, String longitude, String latitude, String cellName, String carrier, String dbm, String PDCCH, String PA, String PB, String cellID, String PCI, String VOLTE, String SRVCC, String voiceA2, String voiceB2, String band, String point, String bandwidth, String sequence, String subframe, String specialSubframes, User user, String date, String result) {
         this.id = id;
         this.name = name;
         this.planning = planning;
@@ -116,19 +146,19 @@ public class Work {
         this.type = type;
     }
 
-    public double getLongitude() {
+    public String getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(double longitude) {
+    public void setLongitude(String longitude) {
         this.longitude = longitude;
     }
 
-    public double getLatitude() {
+    public String getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
+    public void setLatitude(String latitude) {
         this.latitude = latitude;
     }
 
@@ -140,91 +170,91 @@ public class Work {
         this.cellName = cellName;
     }
 
-    public int getCarrier() {
+    public String getCarrier() {
         return carrier;
     }
 
-    public void setCarrier(int carrier) {
+    public void setCarrier(String carrier) {
         this.carrier = carrier;
     }
 
-    public int getDbm() {
+    public String getDbm() {
         return dbm;
     }
 
-    public void setDbm(int dbm) {
+    public void setDbm(String dbm) {
         this.dbm = dbm;
     }
 
-    public int getPDCCH() {
+    public String getPDCCH() {
         return PDCCH;
     }
 
-    public void setPDCCH(int PDCCH) {
+    public void setPDCCH(String PDCCH) {
         this.PDCCH = PDCCH;
     }
 
-    public int getPA() {
+    public String getPA() {
         return PA;
     }
 
-    public void setPA(int PA) {
+    public void setPA(String PA) {
         this.PA = PA;
     }
 
-    public int getPB() {
+    public String getPB() {
         return PB;
     }
 
-    public void setPB(int PB) {
+    public void setPB(String PB) {
         this.PB = PB;
     }
 
-    public int getCellID() {
+    public String getCellID() {
         return cellID;
     }
 
-    public void setCellID(int cellID) {
+    public void setCellID(String cellID) {
         this.cellID = cellID;
     }
 
-    public int getPCI() {
+    public String getPCI() {
         return PCI;
     }
 
-    public void setPCI(int PCI) {
+    public void setPCI(String PCI) {
         this.PCI = PCI;
     }
 
-    public int getVOLTE() {
+    public String getVOLTE() {
         return VOLTE;
     }
 
-    public void setVOLTE(int VOLTE) {
+    public void setVOLTE(String VOLTE) {
         this.VOLTE = VOLTE;
     }
 
-    public int getSRVCC() {
+    public String getSRVCC() {
         return SRVCC;
     }
 
-    public void setSRVCC(int SRVCC) {
+    public void setSRVCC(String SRVCC) {
         this.SRVCC = SRVCC;
     }
 
-    public int getVoiceA2() {
+    public String getVoiceA2() {
         return voiceA2;
     }
 
-    public void setVoiceA2(int voiceA2) {
+    public void setVoiceA2(String voiceA2) {
         this.voiceA2 = voiceA2;
     }
 
-    public int getVoiceB2() {
+    public String getVoiceB2() {
         return voiceB2;
     }
 
-    public void setVoiceB2(int voiceB2) {
+    public void setVoiceB2(String voiceB2) {
         this.voiceB2 = voiceB2;
     }
 
@@ -236,43 +266,43 @@ public class Work {
         Band = band;
     }
 
-    public int getPoint() {
+    public String getPoint() {
         return point;
     }
 
-    public void setPoint(int point) {
+    public void setPoint(String point) {
         this.point = point;
     }
 
-    public int getBandwidth() {
+    public String getBandwidth() {
         return bandwidth;
     }
 
-    public void setBandwidth(int bandwidth) {
+    public void setBandwidth(String bandwidth) {
         this.bandwidth = bandwidth;
     }
 
-    public int getSequence() {
+    public String getSequence() {
         return sequence;
     }
 
-    public void setSequence(int sequence) {
+    public void setSequence(String sequence) {
         this.sequence = sequence;
     }
 
-    public double getSubframe() {
+    public String getSubframe() {
         return subframe;
     }
 
-    public void setSubframe(double subframe) {
+    public void setSubframe(String subframe) {
         this.subframe = subframe;
     }
 
-    public double getSpecialSubframes() {
+    public String getSpecialSubframes() {
         return SpecialSubframes;
     }
 
-    public void setSpecialSubframes(double specialSubframes) {
+    public void setSpecialSubframes(String specialSubframes) {
         SpecialSubframes = specialSubframes;
     }
 
@@ -309,26 +339,26 @@ public class Work {
                 ", city='" + city + '\'' +
                 ", address='" + address + '\'' +
                 ", type='" + type + '\'' +
-                ", longitude=" + longitude +
-                ", latitude=" + latitude +
+                ", longitude='" + longitude + '\'' +
+                ", latitude='" + latitude + '\'' +
                 ", cellName='" + cellName + '\'' +
-                ", carrier=" + carrier +
-                ", dbm=" + dbm +
-                ", PDCCH=" + PDCCH +
-                ", PA=" + PA +
-                ", PB=" + PB +
-                ", cellID=" + cellID +
-                ", PCI=" + PCI +
-                ", VOLTE=" + VOLTE +
-                ", SRVCC=" + SRVCC +
-                ", voiceA2=" + voiceA2 +
-                ", voiceB2=" + voiceB2 +
+                ", carrier='" + carrier + '\'' +
+                ", dbm='" + dbm + '\'' +
+                ", PDCCH='" + PDCCH + '\'' +
+                ", PA='" + PA + '\'' +
+                ", PB='" + PB + '\'' +
+                ", cellID='" + cellID + '\'' +
+                ", PCI='" + PCI + '\'' +
+                ", VOLTE='" + VOLTE + '\'' +
+                ", SRVCC='" + SRVCC + '\'' +
+                ", voiceA2='" + voiceA2 + '\'' +
+                ", voiceB2='" + voiceB2 + '\'' +
                 ", Band='" + Band + '\'' +
-                ", point=" + point +
-                ", bandwidth=" + bandwidth +
-                ", sequence=" + sequence +
-                ", subframe=" + subframe +
-                ", SpecialSubframes=" + SpecialSubframes +
+                ", point='" + point + '\'' +
+                ", bandwidth='" + bandwidth + '\'' +
+                ", sequence='" + sequence + '\'' +
+                ", subframe='" + subframe + '\'' +
+                ", SpecialSubframes='" + SpecialSubframes + '\'' +
                 ", user=" + user +
                 ", date='" + date + '\'' +
                 ", result='" + result + '\'' +

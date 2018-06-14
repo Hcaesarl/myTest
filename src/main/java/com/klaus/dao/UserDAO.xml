@@ -47,4 +47,9 @@
 		values (#{arg0},#{arg1},#{arg2},#{arg3},#{arg4},#{arg5},#{arg6},#{arg7})
 	</insert>
 
+	<select id="selecyUserByNameAndNum" resultMap="usermap">
+		select * from user where user_name=#{arg0} and user_num=#{arg1};
+
+	</select>
+
 </mapper>

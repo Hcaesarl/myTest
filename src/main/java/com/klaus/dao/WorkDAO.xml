@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.klaus.dao.WorkDAO">
+
+    <resultMap id="workmap" type="com.klaus.entity.Work">
+        <id column="work_id" property="id"/>
+        <result column="work_date" property="date"/>
+        <association property="user" select="com.klaus.dao.UserDAO.selectUserById" column="work_user_id"
+                     javaType="com.klaus.entity.User"/>
+    </resultMap>
+
+
+    <select id="selectDate" resultType="java.lang.String">
+        select work_date from work where work_user_id=#{id}
+    </select>
+
+
+    <insert id="upload">
+        insert into work(work_name, work_planning, work_city, work_address, work_type, work_longitude, work_latitude, work_cellName, work_carrier, work_dbm, work_PDCCH, work_PA, work_PB, work_cellID, work_PCI, work_VOLTE, work_SRVCC, work_voiceA2, work_voiceB2, work_band, work_point, work_bandwidth, work_sequence, work_subframe, work_SpecialSubframes, work_user_id, work_date, work_result)
+        values (#{name},#{planning},#{city},#{address},#{type},#{longitude},#{latitude},#{cellName},#{carrier},#{dbm},#{PDCCH},#{PA},#{PB},#{cellID},#{PCI},#{VOLTE},#{SRVCC},#{voiceA2},#{voiceB2},#{band},#{point},#{bandwidth},#{sequence},#{subframe},#{SpecialSubframes},#{user.id},#{date},#{result})
+    </insert>
+
+
+
+</mapper>

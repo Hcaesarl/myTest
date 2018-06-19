@@ -10,8 +10,8 @@
     </resultMap>
 
 
-    <select id="selectDate" resultType="java.lang.String">
-        select work_date from work where work_user_id=#{id}
+    <select id="selectCount" resultType="int">
+        SELECT COUNT(DISTINCT work_name) FROM `work` WHERE work_date=#{arg0} and work_user_id=#{arg1};
     </select>
 
 

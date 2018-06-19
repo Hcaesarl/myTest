@@ -9,5 +9,5 @@ import java.util.Set;
 public interface WorkDAO {
     public void upload(Work work);
 
-    public Set selectDate(User user);
+    public int selectCount(String date,int id);
 }

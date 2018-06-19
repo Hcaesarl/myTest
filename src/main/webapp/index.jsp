@@ -90,53 +90,94 @@
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
 
-    // 指定图表的配置项和数据
-    data = [["2000-06-05",116],["2000-06-06",129],["2000-06-07",135],["2000-06-08",86],["2000-06-09",73],["2000-06-10",85],["2000-06-11",73],["2000-06-12",68],["2000-06-13",92],["2000-06-14",130],["2000-06-15",245],["2000-06-16",139],["2000-06-17",115],["2000-06-18",111],["2000-06-19",309],["2000-06-20",206],["2000-06-21",137],["2000-06-22",128],["2000-06-23",85],["2000-06-24",94],["2000-06-25",71],["2000-06-26",106],["2000-06-27",84],["2000-06-28",93],["2000-06-29",85],["2000-06-30",73],["2000-07-01",83],["2000-07-02",125],["2000-07-03",107],["2000-07-04",82],["2000-07-05",44],["2000-07-06",72],["2000-07-07",106],["2000-07-08",107],["2000-07-09",66],["2000-07-10",91],["2000-07-11",92],["2000-07-12",113],["2000-07-13",107],["2000-07-14",131],["2000-07-15",111],["2000-07-16",64],["2000-07-17",69],["2000-07-18",88],["2000-07-19",77],["2000-07-20",83],["2000-07-21",111],["2000-07-22",57],["2000-07-23",55],["2000-07-24",60]];
+    var base = new Date();
+    var oneDay = 24 * 3600 * 1000;
+    var date = [];
 
-    var dateList = data.map(function (item) {
-        return item[0];
-    });
-    var valueList = data.map(function (item) {
-        return item[1];
-    });
+    var data = [Math.random() * 300];
+
+    var now = new Date(base);
+    var list=${dataList};
+
+    for (var i = 0; i < 30; i++) {
+        date.unshift([now.getFullYear(), now.getMonth() + 1, now.getDate()].join('/'));
+        data.unshift(list[i]);
+        now = new Date(base -= oneDay);
+    }
 
     option = {
-
-        // Make gradient line here
-        visualMap: [{
-            show: false,
-            type: 'continuous',
-            seriesIndex: 0,
-            min: 0,
-            max: 400
-        }],
-
-
-        title: [{
-            left: 'center',
-            text: 'Gradient along the y axis'
-        }],
         tooltip: {
-            trigger: 'axis'
+            trigger: 'axis',
+            position: function (pt) {
+                return [pt[0], '10%'];
+            }
         },
-        xAxis: [{
-            data: dateList
-        }],
-        yAxis: [{
-            splitLine: {show: false}
-        }],
-        grid: [{
-            bottom: '60%'
+        title: {
+            left: 'center',
+            text: '近30天日工作量统计',
+        },
+        toolbox: {
+            feature: {
+                dataZoom: {
+                    yAxisIndex: 'none'
+                },
+                restore: {},
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            boundaryGap: false,
+            data: date
+        },
+        yAxis: {
+            type: 'value',
+            boundaryGap: [0, '100%']
+        },
+        dataZoom: [{
+            type: 'inside',
+            start: 0,
+            end: 100
         }, {
-            top: '60%'
+            start: 0,
+            end: 100,
+            handleIcon: 'M10.7,11.9v-1.3H9.3v1.3c-4.9,0.3-8.8,4.4-8.8,9.4c0,5,3.9,9.1,8.8,9.4v1.3h1.3v-1.3c4.9-0.3,8.8-4.4,8.8-9.4C19.5,16.3,15.6,12.2,10.7,11.9z M13.3,24.4H6.7V23h6.6V24.4z M13.3,19.6H6.7v-1.4h6.6V19.6z',
+            handleSize: '80%',
+            handleStyle: {
+                color: '#fff',
+                shadowBlur: 3,
+                shadowColor: 'rgba(0, 0, 0, 0.6)',
+                shadowOffsetX: 2,
+                shadowOffsetY: 2
+            }
         }],
-        series: [{
-            type: 'line',
-            showSymbol: false,
-            data: valueList
-        }]
+        series: [
+            {
+                name:'日工作量',
+                type:'line',
+                smooth:true,
+                symbol: 'none',
+                sampling: 'average',
+                itemStyle: {
+                    normal: {
+                        color: 'rgb(255, 70, 131)'
+                    }
+                },
+                areaStyle: {
+                    normal: {
+                        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
+                            offset: 0,
+                            color: 'rgb(255, 158, 68)'
+                        }, {
+                            offset: 1,
+                            color: 'rgb(255, 70, 131)'
+                        }])
+                    }
+                },
+                data: data
+            }
+        ]
     };
-
     // 使用刚指定的配置项和数据显示图表。
     myChart.setOption(option);
 </script>

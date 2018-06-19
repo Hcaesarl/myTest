@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 @Controller
@@ -43,8 +44,7 @@ public class UserHandler {
         if (loginUser != null) {
             List<Menu> list = menuService.selectMenuByLevel(loginUser.getLevel());
             Department department=departmentService.selectDepartmentByName(loginUser.getDepartment());
-            Set dataList=workService.selectData(loginUser);
-            System.err.println(dataList);
+            List dataList = workService.selectData(loginUser);
             session.setAttribute("user",loginUser);
             session.setAttribute("list", list);
             modelAndView.addObject("user", loginUser);

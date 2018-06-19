@@ -13,9 +13,9 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 @Service
 public class WorkServiceImpl implements WorkService {
@@ -40,8 +40,7 @@ public class WorkServiceImpl implements WorkService {
 //        for (int rowNum = 1; rowNum <= sheet.getLastRowNum(); rowNum++) {
 
         int rowNum = 1;
-        while (!(sheet.getRow(rowNum).getCell(0).getStringCellValue().equals(""))) {
-
+        while (sheet.getRow(rowNum) != null && !("".equals(sheet.getRow(rowNum).getCell(0).getStringCellValue()))) {
             Row row = sheet.getRow(rowNum);
             List workList = new ArrayList();
 
@@ -71,8 +70,21 @@ public class WorkServiceImpl implements WorkService {
         }
 
     @Override
-    public Set selectData(User user) {
-        return workDAO.selectDate(user);
+    public List selectData(User user) {
+        Date date=new Date(); //取时间
+        Calendar calendar = new GregorianCalendar();
+        List list = new ArrayList();
+        for (int i = 0; i < 30; i++) {
+            SimpleDateFormat ft = new SimpleDateFormat("yyyy-MM-dd");
+            System.out.println(ft.format(date));
+            int count=workDAO.selectCount(ft.format(date).toString(), user.getId());
+            list.add(count);
+            calendar.setTime(date);
+            calendar.add(calendar.DATE,-1); //把日期往后增加一天,整数  往后推,负数往前移动
+            date=calendar.getTime(); //这个时间就是日期往后推一天的结果
+        }
+        return list;
+
     }
 
 
